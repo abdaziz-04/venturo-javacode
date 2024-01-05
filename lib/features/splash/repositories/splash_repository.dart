@@ -1,4 +1,4 @@
-import 'package:diet_nyaman_app/features/splash/constants/splash_api_constant.dart';
+import 'package:venturo_core/features/splash/constants/splash_api_constant.dart';
 
 class SplashRepository {
   SplashRepository._();

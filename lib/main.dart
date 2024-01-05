@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:diet_nyaman_app/configs/routes/route.dart';
+import 'package:venturo_core/configs/routes/route.dart';
 
 import 'configs/pages/page.dart';
 import 'configs/themes/theme.dart';
@@ -26,10 +26,10 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           locale: const Locale('id'),
           fallbackLocale: const Locale('id'),
-          // supportedLocales: const [
-          //   Locale('en', 'US'),
-          //   Locale('id'),
-          // ],
+          supportedLocales: const [
+            Locale('en', 'US'),
+            Locale('id'),
+          ],
           // initialBinding: , Jika memiliki global bindding
           initialRoute: Routes.splashRoute,
           theme: themeLight,
