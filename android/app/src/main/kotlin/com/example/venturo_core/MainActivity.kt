@@ -1,4 +1,4 @@
-package com.example.venturo_core
+package com.example.diet_nyaman_app
 
 import io.flutter.embedding.android.FlutterActivity
 

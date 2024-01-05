@@ -1,0 +1,109 @@
+import 'package:diet_nyaman_app/configs/routes/route.dart';
+import 'package:diet_nyaman_app/configs/themes/app_colors.dart';
+import 'package:diet_nyaman_app/configs/themes/app_fonts.dart';
+import 'package:diet_nyaman_app/features/diet/view/components/diet_card_components.dart';
+import 'package:flutter/material.dart';
+import 'package:diet_nyaman_app/features/diet/constants/diet_assets_constant.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+
+class DietScreen extends StatelessWidget {
+  DietScreen({super.key});
+
+  final assetsConstant = DietAssetsConstant();
+  @override
+  Widget build(BuildContext context) {
+    return SafeArea(
+      child: Scaffold(
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 15.h),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  children: [
+                    GestureDetector(
+                      onTap: () => Get.back(),
+                      child: const Icon(
+                        Icons.arrow_back_ios_rounded,
+                        size: 20,
+                      ),
+                    ),
+                    SizedBox(
+                      width: 20.w,
+                    ),
+                    Expanded(
+                      child: Text(
+                        "Diet",
+                        style: TextStyle(
+                          fontSize: 24.sp,
+                          fontWeight: FontWeight.bold,
+                          color: AppColors.blackText800,
+                          fontFamily: AppFonts.hankenGrotesk,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: 45.h,
+                ),
+                GestureDetector(
+                  onTap: () {
+                    var argument = {"title": "Diet Phase 1"};
+                    Get.toNamed(Routes.detailDietRoute, arguments: argument);
+                  },
+                  child: DietCardComponents(
+                    title: "Diet Phase 1",
+                    background: const Color(0xffFF6091),
+                    img: assetsConstant.dietAssets,
+                    backgroundImg: const Color(0xffFF806C),
+                  ),
+                ),
+                SizedBox(
+                  height: 32.h,
+                ),
+                DietCardComponents(
+                  title: "Diet Phase 2",
+                  background: const Color(0xffFF6091),
+                  img: assetsConstant.dietAssets,
+                  backgroundImg: const Color(0xffFF806C),
+                  isDisable: true,
+                ),
+                SizedBox(
+                  height: 32.h,
+                ),
+                DietCardComponents(
+                  title: "Diet Phase 3",
+                  background: const Color(0xffFF6091),
+                  img: assetsConstant.dietAssets,
+                  backgroundImg: const Color(0xffFF806C),
+                  isDisable: true,
+                ),
+                SizedBox(
+                  height: 32.h,
+                ),
+                GestureDetector(
+                  onTap: () {
+                    var argument = {"title": "Diet Untuk Puasa Sunnah/Ramadhan"};
+                    Get.toNamed(Routes.detailDietRoute, arguments: argument);
+                  },
+                  child: DietCardComponents(
+                    title: "Diet Untuk Puasa Sunnah/Ramadhan",
+                    background: const Color(0xff64DC5A),
+                    img: assetsConstant.iftarAssets,
+                    backgroundImg: const Color(0xff49E5B6),
+                  ),
+                ),
+                SizedBox(
+                  height: 32.h,
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}

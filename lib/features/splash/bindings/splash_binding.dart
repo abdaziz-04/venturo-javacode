@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:venturo_core/features/splash/controllers/splash_controller.dart';
+import 'package:diet_nyaman_app/features/splash/controllers/splash_controller.dart';
 
 class SplashBinding extends Bindings {
   @override

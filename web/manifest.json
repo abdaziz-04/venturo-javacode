@@ -1,6 +1,6 @@
 {
-    "name": "venturo_core",
-    "short_name": "venturo_core",
+    "name": "diet_nyaman_app",
+    "short_name": "diet_nyaman_app",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

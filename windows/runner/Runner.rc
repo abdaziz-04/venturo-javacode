@@ -90,12 +90,12 @@ BEGIN
         BLOCK "040904e4"
         BEGIN
             VALUE "CompanyName", "com.example" "\0"
-            VALUE "FileDescription", "venturo_core" "\0"
+            VALUE "FileDescription", "diet_nyaman_app" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "venturo_core" "\0"
+            VALUE "InternalName", "diet_nyaman_app" "\0"
             VALUE "LegalCopyright", "Copyright (C) 2023 com.example. All rights reserved." "\0"
-            VALUE "OriginalFilename", "venturo_core.exe" "\0"
-            VALUE "ProductName", "venturo_core" "\0"
+            VALUE "OriginalFilename", "diet_nyaman_app.exe" "\0"
+            VALUE "ProductName", "diet_nyaman_app" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END
