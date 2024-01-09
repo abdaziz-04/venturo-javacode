@@ -1,13 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:venturo_core/configs/routes/route.dart';
 
 import 'configs/pages/page.dart';
 import 'configs/themes/theme.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+  await SentryFlutter.init(
+    (options) {
+      options.dsn =
+          'https://30fca41e405dfa6b23883af045e4658e@o4505883092975616.ingest.sentry.io/4506539099095040';
+      options.tracesSampleRate = 1.0;
+    },
+    appRunner: () => runApp(const MyApp()),
+  );
 }
 
 class MyApp extends StatelessWidget {
