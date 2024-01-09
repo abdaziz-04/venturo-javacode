@@ -6,13 +6,16 @@ import 'package:venturo_core/configs/routes/route.dart';
 
 import 'configs/pages/page.dart';
 import 'configs/themes/theme.dart';
+import 'utils/services/sentry_services.dart';
 
 void main() async {
+  /// Change your options.dns with your project !!!!
   await SentryFlutter.init(
     (options) {
       options.dsn =
           'https://30fca41e405dfa6b23883af045e4658e@o4505883092975616.ingest.sentry.io/4506539099095040';
       options.tracesSampleRate = 1.0;
+      options.beforeSend = filterSentryErrorBeforeSend;
     },
     appRunner: () => runApp(const MyApp()),
   );
