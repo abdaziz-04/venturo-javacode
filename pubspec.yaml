@@ -24,6 +24,9 @@ dependencies:
   # Signature
   fast_rsa: ^3.6.1
 
+  # Logger
+  sentry_flutter: ^7.14.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
