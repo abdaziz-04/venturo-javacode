@@ -2,9 +2,11 @@
 
 Venturo Core adalah Sebuah Sekeleton yang dibuat menggunakan State Management Get X yang dipadukan dengan Flutter Util Screen, untuk memudahkan programmer dalam memulai sebuah Project di [Venturo Pro Indonesia](https://venturo.id/).
 
+**Versi Flutter : 3.19.0**
+
 ## Installation
 
-Install deangan cara seperti berikut :
+Install dengan cara seperti berikut :
 
 - Clone git project
 - Ubah nama folder sesuai dengan nama package name
