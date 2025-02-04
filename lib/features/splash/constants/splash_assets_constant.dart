@@ -1,3 +1,3 @@
 class SplashAssetsConstant {
-  final String example = 'example';
+  final String logo = 'assets/images/logo.png';
 }
