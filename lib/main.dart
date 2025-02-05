@@ -1,14 +1,19 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:venturo_core/configs/routes/route.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
 
 import 'configs/pages/page.dart';
 import 'configs/themes/theme.dart';
 import 'utils/services/sentry_services.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+
   /// Change your options.dns with your project !!!!
   await SentryFlutter.init(
     (options) {
@@ -17,15 +22,20 @@ void main() async {
       options.tracesSampleRate = 1.0;
       options.beforeSend = filterSentryErrorBeforeSend;
     },
-    appRunner: () => runApp(const MyApp()),
+    appRunner: () => runApp(MyApp()),
   );
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  static FirebaseAnalytics analytics = FirebaseAnalytics.instance;
 
   @override
   Widget build(BuildContext context) {
+    analytics.setCurrentScreen(
+      screenName: 'Initial Screen',
+      screenClassOverride: 'Trainee',
+    );
+
     /// Screen Util Init berdasarkan ukuran iphone xr
     return ScreenUtilInit(
       designSize: const Size(414, 896),
