@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:venturo_core/configs/routes/route.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 import 'configs/pages/page.dart';
 import 'configs/themes/theme.dart';
@@ -43,8 +44,14 @@ class MyApp extends StatelessWidget {
       splitScreenMode: true,
       builder: (context, child) {
         return GetMaterialApp(
+          localizationsDelegates: const [
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
           title: 'Venturo Core',
           debugShowCheckedModeBanner: false,
+
           locale: const Locale('id'),
           fallbackLocale: const Locale('id'),
           supportedLocales: const [
