@@ -1,5 +1,4 @@
 import 'package:get/get.dart';
-import 'package:venturo_core/features/sig_in/view/ui/sig_in_screen.dart';
 import 'package:venturo_core/shared/controllers/global_controller.dart';
 
 import '../../../configs/routes/route.dart';
