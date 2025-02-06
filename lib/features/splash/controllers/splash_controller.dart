@@ -1,18 +1,32 @@
 import 'package:get/get.dart';
 import 'package:venturo_core/features/sig_in/view/ui/sig_in_screen.dart';
+import 'package:venturo_core/shared/controllers/global_controller.dart';
+
+import '../../../configs/routes/route.dart';
 
 class SplashController extends GetxController {
   static SplashController get to => Get.find();
   @override
   void onInit() {
-    navigateToProfile();
+    _navigateToProfile();
 
     super.onInit();
   }
 
+  Future<void> _navigateToProfile() async {
+    bool loggedIn = await GlobalController.isLoggedIn();
+    Future.delayed(Duration(seconds: 2), () {
+      if (loggedIn) {
+        Get.offAllNamed(Routes.initial);
+      } else {
+        Get.offAllNamed(Routes.sigInRoute);
+      }
+    });
+  }
+
   void navigateToProfile() {
     Future.delayed(Duration(seconds: 2), () {
-      Get.to(SigIScreen());
+      Get.offAllNamed(Routes.sigInRoute);
     });
   }
 }

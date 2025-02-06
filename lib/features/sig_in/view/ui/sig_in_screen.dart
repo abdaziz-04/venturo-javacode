@@ -61,7 +61,7 @@ class SigIScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              SizedBox(height: 121.h),
+              SizedBox(height: 100.h),
               GestureDetector(
                 onDoubleTap: () => SigInController.to.flavorSeting(),
                 child: Image.asset(
@@ -69,7 +69,7 @@ class SigIScreen extends StatelessWidget {
                   fit: BoxFit.contain,
                 ),
               ),
-              SizedBox(height: 121.h),
+              SizedBox(height: 90.h),
               Text(
                 'Masuk untuk melanjutkan!',
                 style: GoogleTextStyle.fw600.copyWith(
@@ -78,7 +78,7 @@ class SigIScreen extends StatelessWidget {
                 ),
                 textAlign: TextAlign.center,
               ),
-              SizedBox(height: 40.h),
+              SizedBox(height: 20.h),
               const FormSignInComponent(),
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
@@ -91,10 +91,10 @@ class SigIScreen extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(height: 40.h),
+              SizedBox(height: 10.h),
               ElevatedButton(
                 style: EvelatedButtonStyle.mainRounded,
-                onPressed: () => SigInController.to.validateForm(context),
+                onPressed: () => SigInController.to.loginApi(context),
                 child: Text(
                   "Masuk",
                   style: GoogleTextStyle.fw800.copyWith(
@@ -104,14 +104,36 @@ class SigIScreen extends StatelessWidget {
                   textAlign: TextAlign.center,
                 ),
               ),
-              SizedBox(height: 40.h),
+              SizedBox(height: 30.h),
+              Text(
+                'Atau',
+                textAlign: TextAlign.center,
+              ),
+              SizedBox(height: 10.h),
               GoogleAuthButton(
+                style: const AuthButtonStyle(
+                  width: 180,
+                  height: 50,
+                  borderRadius: 100,
+                  iconSize: 24,
+                ),
+                text: 'Masuk dengan Google',
                 onPressed: () async {
                   SigInController.to.signInWithGoogle(context);
                 },
-                style: AuthButtonStyle(
-                  buttonType: AuthButtonType.icon,
+              ),
+              SizedBox(height: 15.h),
+              AppleAuthButton(
+                style: const AuthButtonStyle(
+                  width: 180,
+                  height: 50,
+                  borderRadius: 100,
+                  iconSize: 24,
                 ),
+                text: 'Masuk dengan Google',
+                onPressed: () async {
+                  SigInController.to.signInWithGoogle(context);
+                },
               ),
             ],
           ),

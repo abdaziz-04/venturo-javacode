@@ -9,7 +9,7 @@ class ProfileScreen extends StatelessWidget {
   ProfileScreen({Key? key}) : super(key: key);
 
   final assetsConstant = ProfileAssetsConstant();
-  final ProfileController pc = Get.put(ProfileController());
+  // final ProfileController pc = Get.put(ProfileController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,14 +27,28 @@ class ProfileScreen extends StatelessWidget {
             Divider(),
             Obx(() {
               return ListTile(
-                title: Text(pc.productName.value.isNotEmpty
-                    ? 'Product Name: ${pc.productName.value}'
+                title: Text(ProfileController.to.productName.value.isNotEmpty
+                    ? 'Product Name: ${ProfileController.to.productName.value}'
                     : 'Loading...'),
-                subtitle: Text(pc.apiLevel.value.isNotEmpty
-                    ? 'Android Version: ${pc.apiLevel.value}'
+                subtitle: Text(ProfileController.to.apiLevel.value.isNotEmpty
+                    ? 'Android Version: ${ProfileController.to.apiLevel.value}'
                     : 'Loading...'),
               );
-            })
+            }),
+            Divider(),
+            ElevatedButton(
+              onPressed: () {
+                ProfileController.to.logout();
+              },
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Icon(Icons.logout),
+                  SizedBox(width: 8),
+                  Text('Logout'),
+                ],
+              ),
+            ),
           ],
         ),
       ),

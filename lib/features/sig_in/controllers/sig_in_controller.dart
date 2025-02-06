@@ -44,6 +44,7 @@ class SigInController extends GetxController {
       if (response.statusCode == 200) {
         EasyLoading.dismiss();
         Get.offAllNamed(Routes.initial);
+        await GlobalController.setLoggedIn(true);
       } else {
         EasyLoading.dismiss();
         PanaraInfoDialog.show(context,
@@ -95,6 +96,7 @@ class SigInController extends GetxController {
 
       // berhasil login
       Get.offAllNamed(Routes.initial);
+      await GlobalController.setLoggedIn(true);
     } on FirebaseAuthException catch (e) {
       print('Error: $e');
     } catch (e) {

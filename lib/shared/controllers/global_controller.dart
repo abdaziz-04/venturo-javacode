@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:get/get.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 import '../../constants/cores/api/api_constant.dart';
 
@@ -9,6 +10,23 @@ class GlobalController extends GetxController {
   var isConnect = true.obs;
   var baseUrl = ApiConstant.production;
   var isStaging = false.obs;
+  static const String boxName = 'auth';
+  static const String loginKey = 'isLoggedIn';
+
+  static Future<void> setLoggedIn(bool value) async {
+    var box = await Hive.openBox(boxName);
+    await box.put(loginKey, value);
+  }
+
+  static Future<bool> isLoggedIn() async {
+    var box = await Hive.openBox(boxName);
+    return box.get(loginKey, defaultValue: false) as bool;
+  }
+
+  static Future<void> clearLogin() async {
+    var box = await Hive.openBox(boxName);
+    await box.delete(loginKey);
+  }
 
   Future<void> checkConnection() async {
     try {

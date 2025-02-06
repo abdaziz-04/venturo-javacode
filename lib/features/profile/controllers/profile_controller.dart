@@ -1,8 +1,11 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../configs/routes/route.dart';
 import 'package:device_information/device_information.dart';
+
+import '../../../shared/controllers/global_controller.dart';
 
 class ProfileController extends GetxController {
   static ProfileController get to => Get.find();
@@ -13,6 +16,13 @@ class ProfileController extends GetxController {
   void onInit() {
     super.onInit();
     getDeviceInfo();
+  }
+
+  // Logout
+  void logout() async {
+    await FirebaseAuth.instance.signOut();
+    await GlobalController.setLoggedIn(false);
+    Get.offAllNamed(Routes.sigInRoute);
   }
 
   void privacyPolicyWebView() {
