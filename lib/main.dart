@@ -1,19 +1,28 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:venturo_core/configs/routes/route.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-
+import 'package:hive_flutter/hive_flutter.dart';
 import 'configs/pages/page.dart';
 import 'configs/themes/theme.dart';
+import 'shared/controllers/global_controller.dart';
 import 'utils/services/sentry_services.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  // Localstorage
+  await Hive.initFlutter();
+  await Hive.openBox("venturo");
+
+  // Firebase
   await Firebase.initializeApp();
+
+  Get.put(GlobalController());
 
   /// Change your options.dns with your project !!!!
   await SentryFlutter.init(
@@ -63,6 +72,7 @@ class MyApp extends StatelessWidget {
           theme: themeLight,
           defaultTransition: Transition.native,
           getPages: Pages.pages,
+          builder: EasyLoading.init(),
         );
       },
     );

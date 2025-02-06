@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:venturo_core/features/sig_in/view/ui/sig_in_screen.dart';
 
 class SplashController extends GetxController {
   static SplashController get to => Get.find();
@@ -11,7 +12,7 @@ class SplashController extends GetxController {
 
   void navigateToProfile() {
     Future.delayed(Duration(seconds: 2), () {
-      Get.toNamed('/profile');
+      Get.to(SigIScreen());
     });
   }
 }
