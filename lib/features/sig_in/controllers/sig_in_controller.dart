@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
@@ -22,6 +23,7 @@ class SigInController extends GetxController {
   var passwordValue = "".obs;
   var isPassword = true.obs;
   var isRememberMe = false.obs;
+  final Dio _dio = Dio();
 
   // show password
   void showPassword() {
@@ -29,6 +31,38 @@ class SigInController extends GetxController {
       isPassword.value = false;
     } else {
       isPassword.value = true;
+    }
+  }
+
+  Future<void> loginApi(BuildContext context) async {
+    final url = ApiConstant.apiLogin;
+    try {
+      final response = await _dio.post(url, data: {
+        'email': emailCtrl.text,
+        'password': passwordCtrl.text,
+      });
+      if (response.statusCode == 200) {
+        EasyLoading.dismiss();
+        Get.offAllNamed(Routes.initial);
+      } else {
+        EasyLoading.dismiss();
+        PanaraInfoDialog.show(context,
+            title: 'Warning',
+            buttonText: 'Coba Lagi',
+            message: 'Email atau Password salah', onTapDismiss: () {
+          Get.back();
+        },
+            panaraDialogType: PanaraDialogType.warning,
+            barrierDismissible: false);
+      }
+    } catch (e) {
+      print('Error: $e');
+      PanaraInfoDialog.show(context,
+          title: 'Warning',
+          buttonText: 'Coba Lagi',
+          message: 'Tidak dapat login', onTapDismiss: () {
+        Get.back();
+      }, panaraDialogType: PanaraDialogType.warning, barrierDismissible: false);
     }
   }
 
