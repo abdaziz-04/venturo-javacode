@@ -7,6 +7,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:venturo_core/shared/styles/color_style.dart';
 
+import '../../../../configs/routes/route.dart';
 import '../../../../constants/cores/assets/image_constants.dart';
 import '../../../../shared/styles/elevated_button_style.dart';
 import '../../../../shared/styles/google_text_style.dart';
@@ -95,8 +96,7 @@ class ForgotPasswordScreen extends StatelessWidget {
               ElevatedButton(
                 style: EvelatedButtonStyle.mainRounded,
                 onPressed: () {
-                  // Navigate to the OTP screen
-                  Get.toNamed('/otp');
+                  Get.toNamed(Routes.otpRoute);
                 },
                 child: Text(
                   "Ubah Password",

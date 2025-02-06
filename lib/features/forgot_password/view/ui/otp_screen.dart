@@ -12,8 +12,8 @@ import '../../../../constants/cores/assets/image_constants.dart';
 import '../../../../shared/styles/google_text_style.dart';
 import '../../controllers/otp_controller.dart';
 
-class OtpView extends StatelessWidget {
-  const OtpView({Key? key}) : super(key: key);
+class OtpScreen extends StatelessWidget {
+  const OtpScreen({Key? key}) : super(key: key);
 
   static FirebaseAnalytics analytics = FirebaseAnalytics.instance;
 

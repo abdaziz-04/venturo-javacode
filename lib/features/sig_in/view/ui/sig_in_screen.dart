@@ -1,11 +1,13 @@
 import 'dart:io';
 
+import 'package:auth_buttons/auth_buttons.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
+import '../../../../configs/routes/route.dart';
 import '../../../../constants/cores/assets/image_constants.dart';
 import '../../../../shared/styles/elevated_button_style.dart';
 import '../../../../shared/styles/google_text_style.dart';
@@ -78,6 +80,17 @@ class SigIScreen extends StatelessWidget {
               ),
               SizedBox(height: 40.h),
               const FormSignInComponent(),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  TextButton(
+                    onPressed: () {
+                      Get.toNamed(Routes.forgotPasswordRoute);
+                    },
+                    child: const Text('Lupa Password?'),
+                  ),
+                ],
+              ),
               SizedBox(height: 40.h),
               ElevatedButton(
                 style: EvelatedButtonStyle.mainRounded,
@@ -89,6 +102,15 @@ class SigIScreen extends StatelessWidget {
                     color: Colors.white,
                   ),
                   textAlign: TextAlign.center,
+                ),
+              ),
+              SizedBox(height: 40.h),
+              GoogleAuthButton(
+                onPressed: () async {
+                  SigInController.to.signInWithGoogle(context);
+                },
+                style: AuthButtonStyle(
+                  buttonType: AuthButtonType.icon,
                 ),
               ),
             ],

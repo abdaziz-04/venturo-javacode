@@ -29,6 +29,9 @@ dependencies:
   sentry_flutter: ^7.18.0
   flutter_localizations:
     sdk: flutter
+  firebase_auth: ^5.2.0
+  google_sign_in: ^6.2.2
+  auth_buttons: ^1.0.1+4
 
 dev_dependencies:
   flutter_lints: ^3.0.1

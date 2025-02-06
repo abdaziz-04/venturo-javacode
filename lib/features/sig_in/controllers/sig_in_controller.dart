@@ -1,7 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:panara_dialogs/panara_dialogs.dart';
 
 import '../../../configs/routes/route.dart';
@@ -27,6 +29,42 @@ class SigInController extends GetxController {
       isPassword.value = false;
     } else {
       isPassword.value = true;
+    }
+  }
+
+  signInWithGoogle(BuildContext context) async {
+    try {
+      final GoogleSignIn googleSignIn = GoogleSignIn();
+      final GoogleSignInAccount? gUser = await googleSignIn.signIn();
+
+      if (gUser == null) {
+        PanaraInfoDialog.show(context,
+            title: 'Warning',
+            buttonText: 'Coba Lagi',
+            message: 'Tidak ada akun google di perangkat', onTapDismiss: () {
+          Get.back();
+        },
+            panaraDialogType: PanaraDialogType.warning,
+            barrierDismissible: false);
+        // gaada akun
+        return;
+      }
+
+      final GoogleSignInAuthentication gAuth = await gUser.authentication;
+
+      final credential = GoogleAuthProvider.credential(
+        accessToken: gAuth.accessToken,
+        idToken: gAuth.idToken,
+      );
+
+      await FirebaseAuth.instance.signInWithCredential(credential);
+
+      // berhasil login
+      Get.offAllNamed(Routes.initial);
+    } on FirebaseAuthException catch (e) {
+      print('Error: $e');
+    } catch (e) {
+      print('Error: $e');
     }
   }
 
